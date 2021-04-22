@@ -44,7 +44,6 @@ module.exports = function(config, message, edited, deleted)
    // -----------------------------------------
    // Embed member permissions in message data
    // -----------------------------------------
-
    if (message.channel.type === "text" && message.member)
    {
       message.isAdmin =
@@ -80,7 +79,11 @@ module.exports = function(config, message, edited, deleted)
 
    // ------------------
    // Proccess Commands
-   // ------------------
+ if (!message.content)
+{
+return;
+}  
+     // ------------------
 
    if (message.content.startsWith(config.translateCmd)||message.content.startsWith(config.translateCmdShort)||message.isMentioned(bot))
    {
